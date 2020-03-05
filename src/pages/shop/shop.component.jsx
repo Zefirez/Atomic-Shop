@@ -20,7 +20,6 @@ class ShopPage extends React.Component {
                     <CollectionPreview key={id} {...otherCollectionProps} />
             ))}
         </div>)
-        //return <div><CollectionPreview title='hats' items={SHOP_DATA[0].items}></CollectionPreview></div>
     }
 }
 
