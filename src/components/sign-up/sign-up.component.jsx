@@ -23,16 +23,21 @@ class SignUp extends React.Component {
     handleSubmit = async event => {
         event.preventDefault();
 
+        //draw sign-up info from this.state
         const { displayName, email, password, confirmPassword } = this.state;
 
+        //stop execution of passwords do not match
         if (password !== confirmPassword) {
             alert('Passwords do not match');
             return;
         }
 
         try {
+            //send new user data to firebase to create a new user with provided info
             const { user } = await auth.createUserWithEmailAndPassword(email, password);
+            //merge said data with displayName and insert it into our user database
             await createUserProfileDocument(user, { displayName })
+            //mission complete, time to clear the state object
             this.setState({
                 displayName: '',
                 email: '',
@@ -46,7 +51,7 @@ class SignUp extends React.Component {
 
     handleChange = event => {
         const { name, value } = event.target;
-        this.setState({[name]: value});
+        this.setState({ [name]: value });
     }
 
     render() {
