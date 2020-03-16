@@ -1,5 +1,7 @@
-export const addItemToCart = (cartItems, cartItemToAdd) => {    
-    
+import cartReducer from "./cart.reducer";
+
+export const addItemToCart = (cartItems, cartItemToAdd) => {
+
     const existingCartItem = cartItems.find(
         cartItem => {
             return cartItem.id === cartItemToAdd.id
@@ -15,4 +17,18 @@ export const addItemToCart = (cartItems, cartItemToAdd) => {
     }
 
     return [...cartItems, { ...cartItemToAdd, quantity: 1 }]
+}
+
+export const removeItemFromCart = (cartItems, itemToRemove) => {
+    var targetItem = cartItems.find(item => item.id === itemToRemove.id);
+    if (targetItem.quantity === 1) {
+        return cartItems.filter(item => item.id !== itemToRemove.id)
+    }
+
+    return cartItems.map(
+        cartItem => cartItem.id === itemToRemove.id?
+        {...cartItem, quantity: cartItem.quantity-1 }
+        :
+        cartItem
+    );
 }
