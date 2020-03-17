@@ -1,5 +1,5 @@
 import CartActionTypes from './cart.types'
-import { addItemToCart, clearItemFromCart, removeItemFromCart } from './cart.utils'
+import { addItemToCart, removeItemFromCart } from './cart.utils'
 import CardActionTypes from './cart.types'
 
 
