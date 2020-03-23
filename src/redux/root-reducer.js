@@ -14,7 +14,8 @@ const persistConfig = {
     //this means that it'll be using localStorage to save data
     storage,
     //this is the list of reducers you want saved in your storage
-    whiteList: ['cart']
+    whiteList: ['cart'],
+    blackList: ['user']
 }
 
 const rootReducer = combineReducers({
