@@ -24,8 +24,8 @@ function* getSnapshotFromUserAuth(userAuth, additionalData) {
       userAuth,
       additionalData
     );
+    
     const userSnapshot = yield userRef.get();
-    console.log("loogin in returned: ", userSnapshot.data());
     yield put(signInSuccess({ id: userSnapshot.id, ...userSnapshot.data() }));
   } catch (error) {
     yield put(signInFailure(error));
